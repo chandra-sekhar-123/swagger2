@@ -1,0 +1,17 @@
+const mongoose = require('mongoose');
+const { options } = require('../routes');
+const Schema = mongoose.Schema;
+const QuestionSchema = new mongoose.Schema({
+  type: String,
+  id: String,
+  content: String,
+  answer:String,
+  
+  updated_at: { type: Date, default: Date.now },
+  createdby:{ type: Schema.Types.ObjectId, ref: 'User' },
+  options:[{ type: Schema.Types.ObjectId, ref: 'Option' }]
+});
+
+module.exports = mongoose.model('Question', QuestionSchema);
+/**  schema is stucture of data which can be stored {employee name, address, employee id, position, salary, 
+ * updated_at }*/
